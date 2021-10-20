@@ -10,4 +10,4 @@ because the conventional formula suffers from critical disadvantages[^2].
 
 ## Footnotes
 [^1]: [Roots of a quadratic function, Rosetta Code](http://rosettacode.org/wiki/Roots_of_a_quadratic_function#C.23)
-[^2]: [Methods of Design-Oriented Analysis: The quadratic equation revisited, by R.D. Middlebrook](https://www.validlab.com/goldberg/paper.pdf)
+[^2]: [Methods of Design-Oriented Analysis: The quadratic equation revisited, by R.D. Middlebrook](https://authors.library.caltech.edu/63245/1/00683365.pdf)
