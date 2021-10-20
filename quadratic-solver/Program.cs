@@ -65,7 +65,7 @@ namespace QuadraticExploration
             // Used to output superscript and subscript numbers
             Console.OutputEncoding = System.Text.Encoding.Unicode;
             // Game loop pattern
-            // done is set to false and the application exits, if the user presses q after an equation is solved
+            // done is set to true and the application exits, if the user presses q after an equation is solved
             bool done = false;
             while (!done)
             {
