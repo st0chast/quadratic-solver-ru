@@ -5,6 +5,8 @@ namespace QuadraticExploration
 {
     class Program
     {
+        // All the maths happen in this method
+        // Note: users can't provide zero as the value of parameter a
         static Solution Solve(double a, double b, double c, Solution _output)
         {
             if (b != 0)
@@ -31,6 +33,7 @@ namespace QuadraticExploration
         private class InputData
         {
             public string userInput { get; set; }
+            // Used for the input loop, stays false while TryParse fails
             public bool isParsed { get; set; }
             public double parsedInput { get; set; }
             public string paramName { get; set; }
@@ -42,7 +45,7 @@ namespace QuadraticExploration
             id.paramName = paramName;
             while (!id.isParsed)
             {
-                Console.WriteLine($"Enter parameter: {id.paramName}");
+                Console.Write($"Enter parameter {id.paramName}: ");
                 id.userInput = Console.ReadLine();
                 if (double.TryParse(id.userInput, out double parsed))
                 {
@@ -51,7 +54,7 @@ namespace QuadraticExploration
                 }
                 if (!id.isParsed)
                 {
-                    Console.WriteLine("Make sure you enter an integer!");
+                    Console.WriteLine("Make sure you enter a real number!");
                 }
             }
         }
@@ -59,12 +62,16 @@ namespace QuadraticExploration
         static void Main()
         {
             var nl = System.Environment.NewLine;
+            // Used to output superscript and subscript numbers
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+            // Game loop pattern
+            // done is set to false and the application exits, if the user presses q after an equation is solved
             bool done = false;
             while (!done)
             {
-                Solution output = new();
-                Console.WriteLine("Quadratic equation solver, tentative version");
+                Console.WriteLine($"Welcome to this simple quadratic equation solver.{nl}" +
+                    $"Only real numbers are accepted for parameters a, b, and c.{nl}" +
+                    $"The roots are presented as complex numbers: (real part, imaginary part){nl}");
                 InputData aIn = new();
                 InputProcessor(aIn, "a");
                 if (aIn.parsedInput == 0)
@@ -79,8 +86,9 @@ namespace QuadraticExploration
                 InputProcessor(bIn, "b");
                 InputData cIn = new();
                 InputProcessor(cIn, "c");
+                Solution output = new();
                 output = Solve(aIn.parsedInput, bIn.parsedInput, cIn.parsedInput, output);
-                Console.WriteLine($"{nl}Roots found: x₁={output.x1}, x₂={output.x2}");
+                Console.WriteLine($"{nl}Roots found:{nl}x₁={output.x1},{nl}x₂={output.x2}");
                 Console.WriteLine($"{nl}Press q to quit or any other key to continue");
                 char q = Console.ReadKey().KeyChar;
                 Console.Clear();
