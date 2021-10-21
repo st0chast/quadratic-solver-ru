@@ -7,20 +7,20 @@ namespace quadratic_solver_ru
     {
         // Вся математика осуществляется в этом методе
         // Замечание: введение ноля для переменной a не допускается
-        public static Solution Solve(double a, double b, double c, Solution _output)
+        public static Solution Solve(double a, double b, double c, Solution data)
         {
             if (b != 0)
             {
                 var q = -(b + Math.Sign(b) * Complex.Sqrt(b * b - 4 * a * c)) / 2;
-                _output.x1 = q / a;
-                _output.x2 = c / q;
-                return _output;
+                data.x1 = q / a;
+                data.x2 = c / q;
+                return data;
             }
             else
             {
-                _output.x1 = Complex.Sqrt(-c / a);
-                _output.x2 = -Complex.Sqrt(-c / a);
-                return _output;
+                data.x1 = Complex.Sqrt(-c / a);
+                data.x2 = -Complex.Sqrt(-c / a);
+                return data;
             }
         }
 
@@ -86,8 +86,8 @@ namespace quadratic_solver_ru
                 InputProcessor(bIn, "b");
                 InputData cIn = new();
                 InputProcessor(cIn, "c");
-                Solution output = new();
-                output = Solve(aIn.parsedInput, bIn.parsedInput, cIn.parsedInput, output);
+                Solution data = new();
+                Solution output = Solve(aIn.parsedInput, bIn.parsedInput, cIn.parsedInput, data);
                 Console.WriteLine($"{nl}Найдены корни:{nl}x₁={output.x1},{nl}x₂={output.x2}");
                 Console.WriteLine($"{nl}Нажмите q, чтобы выйти или любую другую клавишу, чтобы продолжить.");
                 char q = Console.ReadKey().KeyChar;
