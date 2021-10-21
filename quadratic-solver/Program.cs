@@ -5,8 +5,8 @@ namespace QuadraticExploration
 {
     class Program
     {
-        // All the maths happen in this method
-        // Note: users can't provide zero as the value of parameter a
+        // Вся математика осуществляется в этом методе
+        // Замечание: введение ноля для переменной a не допускается
         static Solution Solve(double a, double b, double c, Solution _output)
         {
             if (b != 0)
@@ -33,7 +33,7 @@ namespace QuadraticExploration
         private class InputData
         {
             public string userInput { get; set; }
-            // Used for the input loop, stays false while TryParse fails
+            // Используется для цикла ввода, остаётся ложью пока TryParse не рабатывает
             public bool isParsed { get; set; }
             public double parsedInput { get; set; }
             public string paramName { get; set; }
@@ -45,7 +45,7 @@ namespace QuadraticExploration
             id.paramName = paramName;
             while (!id.isParsed)
             {
-                Console.Write($"Enter parameter {id.paramName}: ");
+                Console.Write($"Введите параметр {id.paramName}: ");
                 id.userInput = Console.ReadLine();
                 if (double.TryParse(id.userInput, out double parsed))
                 {
@@ -54,7 +54,7 @@ namespace QuadraticExploration
                 }
                 if (!id.isParsed)
                 {
-                    Console.WriteLine("Make sure you enter a real number!");
+                    Console.WriteLine("Убедитесь, что вводите вещественное число!");
                 }
             }
         }
@@ -62,22 +62,22 @@ namespace QuadraticExploration
         static void Main()
         {
             var nl = System.Environment.NewLine;
-            // Used to output superscript and subscript numbers
+            // Используется для подстрочных цифр
             Console.OutputEncoding = System.Text.Encoding.Unicode;
-            // Game loop pattern
-            // done is set to true and the application exits, if the user presses q after an equation is solved
+            // Шаблон game loop
+            // done становится правдой и приложение закрывается, если пользователь нажимает q после решения уравнения
             bool done = false;
             while (!done)
             {
-                Console.WriteLine($"Welcome to this simple quadratic equation solver.{nl}" +
-                    $"Only real numbers are accepted for parameters a, b, and c.{nl}" +
-                    $"The roots are presented as complex numbers: (real part, imaginary part){nl}");
+                Console.WriteLine($"Простой решатель квадратных уравнений приветствует вас.{nl}" +
+                    $"Только вещественные числа принимаются для параметров  a, b и c.{nl}" +
+                    $"Корни представляются в виде комплексных чисел: (вещественная часть, мнимая часть){nl}");
                 InputData aIn = new();
                 InputProcessor(aIn, "a");
                 if (aIn.parsedInput == 0)
                 {
-                    Console.WriteLine($"Equations with parameter a equal to zero are not quadratic!{nl}" +
-                        $"Press any key to continue.");
+                    Console.WriteLine($"Уравнения с параметром a равным нулю не являются квадратными!{nl}" +
+                        $"Нажмите любую клавишу, чтобы продолжить.");
                     Console.ReadKey();
                     Console.Clear();
                     continue;
@@ -88,8 +88,8 @@ namespace QuadraticExploration
                 InputProcessor(cIn, "c");
                 Solution output = new();
                 output = Solve(aIn.parsedInput, bIn.parsedInput, cIn.parsedInput, output);
-                Console.WriteLine($"{nl}Roots found:{nl}x₁={output.x1},{nl}x₂={output.x2}");
-                Console.WriteLine($"{nl}Press q to quit or any other key to continue");
+                Console.WriteLine($"{nl}Найдены корни:{nl}x₁={output.x1},{nl}x₂={output.x2}");
+                Console.WriteLine($"{nl}Нажмите q, чтобы выйти или любую другую клавишу, чтобы продолжить.");
                 char q = Console.ReadKey().KeyChar;
                 Console.Clear();
                 if (q == 'q')
