@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Numerics;
 
-namespace QuadraticExploration
+namespace quadratic_solver_ru
 {
-    class Program
+    public class QuadraticSolver
     {
         // Вся математика осуществляется в этом методе
         // Замечание: введение ноля для переменной a не допускается
-        static Solution Solve(double a, double b, double c, Solution _output)
+        public static Solution Solve(double a, double b, double c, Solution _output)
         {
             if (b != 0)
             {
@@ -24,7 +24,7 @@ namespace QuadraticExploration
             }
         }
 
-        private class Solution
+        public class Solution
         {
             public Complex x1 { get; set; }
             public Complex x2 { get; set; }
