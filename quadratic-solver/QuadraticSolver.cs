@@ -30,7 +30,7 @@ namespace quadratic_solver_ru
             public Complex x2 { get; set; }
         }
 
-        private class InputData
+        public class InputData
         {
             public string userInput { get; set; }
             // Используется для цикла ввода, остаётся ложью пока TryParse не рабатывает
@@ -39,7 +39,7 @@ namespace quadratic_solver_ru
             public string paramName { get; set; }
         }
 
-        private static void InputProcessor(InputData id, string paramName)
+        public static void InputProcessor(InputData id, string paramName)
         {
             id.isParsed = false;
             id.paramName = paramName;
