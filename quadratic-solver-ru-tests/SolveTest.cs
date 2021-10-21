@@ -7,7 +7,7 @@ namespace quadratic_solver_ru_tests
     public class SolveTest
     {
         [Fact]
-        public void TestBigNumber()
+        public void TestExtraBigNegativeNumber()
         {
             double a = 1;
             double b = -1E20;
