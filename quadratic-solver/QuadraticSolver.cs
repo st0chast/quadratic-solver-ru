@@ -72,7 +72,10 @@ namespace quadratic_solver_ru
                 Console.WriteLine($"Простой решатель квадратных уравнений приветствует вас.{nl}" +
                     $"Только вещественные числа принимаются для параметров  a, b и c.{nl}" +
                     $"Корни представляются в виде комплексных чисел: (вещественная часть, мнимая часть){nl}");
+
                 InputData aIn = new();
+                InputData bIn = new();
+                InputData cIn = new();
                 InputProcessor(aIn, "a");
                 if (aIn.parsedInput == 0)
                 {
@@ -82,10 +85,9 @@ namespace quadratic_solver_ru
                     Console.Clear();
                     continue;
                 }
-                InputData bIn = new();
                 InputProcessor(bIn, "b");
-                InputData cIn = new();
                 InputProcessor(cIn, "c");
+
                 Solution data = new();
                 Solution output = Solve(aIn.parsedInput, bIn.parsedInput, cIn.parsedInput, data);
                 Console.WriteLine($"{nl}Найдены корни:{nl}x₁={output.x1},{nl}x₂={output.x2}");
