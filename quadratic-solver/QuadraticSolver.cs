@@ -99,7 +99,6 @@ namespace quadratic_solver_ru
                     done = true;
                 }
             }
-
         }
     }
 }
