@@ -299,6 +299,8 @@ namespace quadratic_solver_ru_tests
             double c = 9.9;
             Solution _output = new();
             Solution output = new();
+            // Корни, конечно, всё-таки: -0.5 - 0.866025i и -0.5 + 0.866025i
+            // Данный тест прекрасно иллюстрирует ограничения чисел с плавающей запятой
             output.x1 = new Complex(-0.5, -0.8660254037844387);
             output.x2 = new Complex(-0.49999999999999994, 0.8660254037844386);
             _output = Solve(a, b, c, _output);
